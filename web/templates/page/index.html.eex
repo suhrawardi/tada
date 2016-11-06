@@ -1,0 +1,20 @@
+<div>
+  <h2><%= gettext "Tada!" %></h2>
+  <p class="lead">Start creating, using, sharing and cooperating a <em>Todo list</em>:</p>
+</div>
+
+<div>
+  <%= form_for @changeset, list_path(@conn, :create), fn f -> %>
+    <div class="form-group">
+      <%= text_input f, :title,
+                     placeholder: "What's the title of your todolist?",
+                     class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= password_input f, :password,
+                         placeholder: "choose a password to protect your list…",
+                         class: "form-control" %>
+    </div>
+    <%= submit "And go…!", class: "btn btn-primary" %>
+  <% end %>
+</div>

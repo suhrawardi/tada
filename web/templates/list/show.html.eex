@@ -1,0 +1,16 @@
+<h1><%= link @list.title, to: list_path(@conn, :show, @list) %></h1>
+
+
+<ul>
+  <li>...</li>
+</ul>
+
+<p>
+  <%= link "Link",
+           to: list_path(@conn, :show, @list) %>
+  or
+  <%= link "Delete",
+           to: list_path(@conn, :delete, @list),
+           method: :delete,
+           data: [confirm: "Are you sure?"] %> your <em>Tada</em> list
+</p>
