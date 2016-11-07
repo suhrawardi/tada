@@ -8,13 +8,19 @@ defmodule Tada.ListAuth do
 
   def call(conn, repo) do
     uuid = get_session(conn, :uuid)
-    list = uuid && repo.get_by(Tada.List, uuid: uuid)
-    assign(conn, :current_list, list)
+    cond do
+      list = conn.assigns[:current_list] ->
+        put_current_list(conn, list)
+      list = uuid && repo.get_by(Tada.List, uuid: uuid) ->
+        put_current_list(conn, list)
+      true ->
+        assign(conn, :current_list, nil)
+    end
   end
 
   def login(conn, list) do
     conn
-    |> assign(:current_list, list)
+    |> put_current_list(list)
     |> put_session(:uuid, list.uuid)
     |> configure_session(renew: true)
   end
@@ -35,5 +41,12 @@ defmodule Tada.ListAuth do
         dummy_checkpw()
         {:error, :not_found, conn}
     end
+  end
+
+  defp put_current_list(conn, list) do
+    token = Phoenix.Token.sign(conn, "list socket", list.id)
+    conn
+    |> assign(:current_list, list)
+    |> assign(:list_token, token)
   end
 end

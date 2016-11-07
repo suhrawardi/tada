@@ -7,6 +7,7 @@ defmodule Tada.ListController do
 
   def show(conn, %{"id" => uuid}) do
     list = Repo.get_by(Tada.List, uuid: uuid)
+           |> Repo.preload(:items)
     render conn, "show.html", list: list
   end
 

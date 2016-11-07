@@ -1,8 +1,10 @@
 <h1><%= link @list.title, to: list_path(@conn, :show, @list) %></h1>
 
-
 <div>
   <ul id="item-container">
+    <%= for item <- @list.items do %>
+      <li><%= item.title %></li>
+    <% end %>
   </ul>
   <%= content_tag :div, id: "list", data: [list_id: @list.id] do %>
   <% end %>

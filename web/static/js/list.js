@@ -13,7 +13,7 @@ let List = {
     let listChannel = socket.channel("lists:" + listId)
 
     itemButton.addEventListener("click", e => {
-      let payload = {body: itemInput.value}
+      let payload = {title: itemInput.value}
       listChannel.push("new_item", payload)
                  .receive("error", e => console.log(e))
       itemInput.value = ""
@@ -34,9 +34,9 @@ let List = {
     return div.innerHTML
   },
 
-  renderItem(itemContainer, {list, body}) {
+  renderItem(itemContainer, {list, title}) {
     let template = document.createElement("div")
-    template.innerHTML = `<li>${this.esc(body)}</li>`
+    template.innerHTML = `<li>${this.esc(title)}</li>`
     itemContainer.appendChild(template)
     itemContainer.scrollTop = itemContainer.scrollHeight
   }

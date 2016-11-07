@@ -13,4 +13,10 @@ defmodule Tada.Item do
     has_many :tags, Tada.Tag
     belongs_to :list, Tada.List
   end
+
+  def changeset(model, params \\ %{}) do
+    model
+    |> cast(params, ~w(title), [])
+    |> validate_length(:title, min: 3, max: 64)
+  end
 end

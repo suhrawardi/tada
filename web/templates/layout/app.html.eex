@@ -16,7 +16,7 @@
       <header class="header">
         <ol class="breadcrumb text-right">
           <li><%= link "Home", to: page_path(@conn, :index) %></li>
-          <% if @current_list do %>
+          <%= if @current_list do %>
             <li><%= link "Log out", to: session_path(@conn, :delete, @current_list),
                                     method: :delete %></li>
           <% end %>
@@ -31,6 +31,7 @@
       </main>
 
     </div> <!-- /container -->
+    <script>window.listToken = "<%= assigns[:list_token] %>"</script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
