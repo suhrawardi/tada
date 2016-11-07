@@ -1,7 +1,7 @@
 defmodule Tada.Endpoint do
   use Phoenix.Endpoint, otp_app: :tada
 
-  socket "/socket", Tada.UserSocket
+  socket "/socket", Tada.ListSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #

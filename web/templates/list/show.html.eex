@@ -1,9 +1,24 @@
 <h1><%= link @list.title, to: list_path(@conn, :show, @list) %></h1>
 
 
-<ul>
-  <li>...</li>
-</ul>
+<div>
+  <ul id="item-container">
+  </ul>
+  <%= content_tag :div, id: "list", data: [list_id: @list.id] do %>
+  <% end %>
+  <div>
+    <textarea id="item-input"
+              rows="3"
+              class="form-control"
+              placeholder="Add a todo item"></textarea>
+  </div>
+  <br />
+  <div>
+    <button id="item-button" class="btn btn-primary form-control" type="submit">
+      Add
+    </button>
+  </div>
+</div>
 
 <p>
   <%= link "Link",
