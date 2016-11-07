@@ -4,10 +4,10 @@ A very minimal todo list application.
 It let's you  create a new todo list secured by a list specific password.
 
 You can visit that todo list with this password and:
-1.) Add items with a due date and a tag
-2.) Order items
-3.) Change the status of items
-4.) And be happily organized!
+* Add items with a due date and a tag
+* Order items
+* Change the status of items
+* And be happily organized!
 
 To start your Phoenix app:
 
