@@ -8,7 +8,7 @@ defmodule Tada.Repo.Migrations.CreateItem do
       add :status, :string
       add :content, :string
       add :due_date, :datetime
-      add :list_id, references(:lists, on_delete: :nothing)
+      add :list_id, references(:lists, on_delete: :delete_all)
 
       timestamps
     end
