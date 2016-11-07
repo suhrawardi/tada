@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :tada, Tada.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "jarra",
+  password: "",
   database: "tada_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
